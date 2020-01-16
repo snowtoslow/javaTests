@@ -39,17 +39,22 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public ResponseEntity<Object> createPerson(Person person) throws UserException {
-
+    public Person createPerson(Person person) throws UserException {
 
 
         if (personRepository.findByEmail(person.getEmail())!=null){
             throw new UserException("There is already person with such email: "+person.getEmail());
+        }else if (person.getEmail()==null){
+            throw new UserException("You have missed EMAIL FIELD!!!!!!Please complete it!");
+        }else if (person.getFullName()==null){
+            throw new UserException("You have missed FULL NAME filed!Please complete it!");
         }
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{personId}").buildAndExpand(personRepository.save(person).getPersonId()).toUri();
 
-        return ResponseEntity.created(location).build();
+        ResponseEntity.created(location).build();
+
+        return person;
     }
 
     @Override

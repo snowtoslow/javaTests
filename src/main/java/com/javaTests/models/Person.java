@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "persons")
-@JsonIgnoreProperties(value = "getPersonId(),setPersonId()")
+/*@JsonIgnoreProperties(value = "getPersonId(),setPersonId()")*/
 public class Person {
 
     @Id

@@ -47,7 +47,7 @@ public class PersonController extends PersonServiceImpl{
 
     @Override
     @PostMapping("person/create")
-    public ResponseEntity<Object> createPerson(@RequestBody Person person) throws UserException {
+    public Person createPerson(@RequestBody Person person) throws UserException {
         return super.createPerson(person);
     }
 
