@@ -29,4 +29,4 @@ databaseChangeLog:
             tableName: persons
         - createSequence:
             sequenceName: HIBERNATE_SEQUENCE
-            startValue: 5
+            startValue: 4

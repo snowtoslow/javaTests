@@ -1,4 +1,4 @@
-package com.javaTests.IntegrationTests.db_tests;
+package com.javaTests.integrationtests.db_tests;
 
 
 import com.javaTests.models.Person;
@@ -29,7 +29,7 @@ import static org.hamcrest.CoreMatchers.is;
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class})
 @Slf4j
-//this test don't work because we dont need to use DbUnit
+//this test don't work because we dont need to use DbUnit and its used when u dont have a db with entities just for test it;
 public class PersonRepositoryDBUnitTest {
 
     @Autowired

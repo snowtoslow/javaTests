@@ -6,6 +6,7 @@ import com.javaTests.models.Person;
 import com.javaTests.services.serviceImpl.PersonServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
-@SpringBootTest()
+@SpringBootTest
 @Slf4j
-public class PersonManagementServiceUnitTest {
+public class PersonServiceIntegrationTest {
 
     @Autowired
     private PersonServiceImpl personServiceImpl;
@@ -30,8 +31,8 @@ public class PersonManagementServiceUnitTest {
         //Create a person;
         Person jenny = new Person();
 
-        jenny.setEmail("turner.jenny@gmail.com");
-        jenny.setFullName("Jenny Turner");
+        jenny.setEmail("fred.galagher@gmail.com");
+        jenny.setFullName("Fred Galagher");
 
         log.info("jenny:{}",jenny);
 
@@ -43,7 +44,7 @@ public class PersonManagementServiceUnitTest {
 
         Assert.assertNotNull(newPerson.getPersonId());
 
-        Assert.assertNotNull("Jenny Turner",jenny.getFullName());
+        Assert.assertNotNull("Fred Galagher",jenny.getFullName());
     }
 
 
