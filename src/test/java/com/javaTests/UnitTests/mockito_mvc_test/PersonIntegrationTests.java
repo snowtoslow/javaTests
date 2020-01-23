@@ -1,4 +1,4 @@
-package com.javaTests.integrationtests.mockito_mvc_test;
+package com.javaTests.UnitTests.mockito_mvc_test;
 
 
 import com.javaTests.controllers.PersonController;

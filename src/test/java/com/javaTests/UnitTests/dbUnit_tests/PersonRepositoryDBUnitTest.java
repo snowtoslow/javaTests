@@ -1,4 +1,4 @@
-package com.javaTests.integrationtests.db_tests;
+package com.javaTests.UnitTests.dbUnit_tests;
 
 
 import com.javaTests.models.Person;

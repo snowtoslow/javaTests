@@ -1,4 +1,4 @@
-package com.javaTests.UnitTests.service_test;
+package com.javaTests.integrationtests.service_test;
 
 
 import com.javaTests.exceptions.UserException;
@@ -6,7 +6,6 @@ import com.javaTests.models.Person;
 import com.javaTests.services.serviceImpl.PersonServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -29,4 +29,11 @@ public class Person {
     private String email;
 
 
+    public Person(String fullName, String email) {
+        this.fullName = fullName;
+        this.email = email;
+    }
+
+    public Person() {
+    }
 }

@@ -4,8 +4,8 @@ import com.javaTests.exceptions.UserException;
 import com.javaTests.models.Person;
 import com.javaTests.repository.PersonRepository;
 import com.javaTests.services.PersonService;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -17,20 +17,25 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-@AllArgsConstructor
 public class PersonServiceImpl implements PersonService {
 
-    private final PersonRepository personRepository;
+    @Autowired
+    private  PersonRepository personRepository;
+
+
 
     @Override
     public List<Person> findAll(){
+
+        log.info("Persons:{}",personRepository.findAll());
 
         return personRepository.findAll();
     }
 
     @Override
     public Object readPersonById(long personId) throws UserException {
-       return personRepository.findById(personId).orElseThrow(()->new UserException("There is no person with such ID:"+personId));
+
+        return personRepository.findById(personId).orElseThrow(()->new UserException("There is no person with such ID:"+personId));
     }
 
     @Override

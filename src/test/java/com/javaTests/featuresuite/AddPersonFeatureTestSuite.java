@@ -1,9 +1,9 @@
 package com.javaTests.featuresuite;
 
 
+import com.javaTests.integrationtests.controller_test.PersonControllerIntegrationTest;
+import com.javaTests.integrationtests.service_test.PersonServiceIntegrationTest;
 import com.javaTests.integrationtests.repository_test.PersonRepositoryIntegrationTests;
-import com.javaTests.UnitTests.controller_test.PersonControllerIntegrationTest;
-import com.javaTests.UnitTests.service_test.PersonServiceIntegrationTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
