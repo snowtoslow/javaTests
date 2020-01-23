@@ -1,4 +1,4 @@
-package com.javaTests.featuresuite;
+/*package com.javaTests.featuresuite;
 
 
 import com.javaTests.integrationtests.controller_test.PersonControllerIntegrationTest;
@@ -16,4 +16,4 @@ public class AddPersonFeatureTestSuite {
 
 
 
-}
+}*/

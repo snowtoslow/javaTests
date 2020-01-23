@@ -1,3 +1,4 @@
+/*
 package com.javaTests.UnitTests.dbUnit_tests;
 
 
@@ -52,3 +53,4 @@ public class PersonRepositoryDBUnitTest {
 
 
 }
+*/

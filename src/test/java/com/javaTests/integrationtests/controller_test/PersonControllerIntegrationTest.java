@@ -1,3 +1,4 @@
+/*
 package com.javaTests.integrationtests.controller_test;
 
 import com.javaTests.controllers.PersonController;
@@ -71,3 +72,4 @@ public class PersonControllerIntegrationTest {
 
     }
 }
+*/

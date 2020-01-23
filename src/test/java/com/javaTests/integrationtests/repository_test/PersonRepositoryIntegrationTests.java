@@ -1,3 +1,4 @@
+/*
 package com.javaTests.integrationtests.repository_test;
 
 
@@ -54,3 +55,4 @@ public class PersonRepositoryIntegrationTests {
 
 
 }
+*/

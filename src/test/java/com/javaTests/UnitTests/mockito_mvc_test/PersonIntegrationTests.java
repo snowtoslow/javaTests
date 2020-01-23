@@ -1,3 +1,4 @@
+/*
 package com.javaTests.UnitTests.mockito_mvc_test;
 
 
@@ -70,3 +71,4 @@ public class PersonIntegrationTests {
 
     }
 }
+*/
