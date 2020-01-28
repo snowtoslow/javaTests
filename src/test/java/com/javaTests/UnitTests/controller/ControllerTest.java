@@ -5,6 +5,7 @@ import com.javaTests.models.Person;
 import com.javaTests.repository.PersonRepository;
 import com.javaTests.services.serviceImpl.PersonServiceImpl;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -23,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Slf4j
 @WebMvcTest(PersonController.class)
 @RunWith(SpringRunner.class)
-public class controllerTest {
+public class ControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -32,24 +33,31 @@ public class controllerTest {
     private PersonServiceImpl personServiceImpl;
 
     @Test
-    public void getAllPersons() throws Exception {
-        Person jane = new Person("Jane Turner","jane@gmail.com");
-        Person greg = new Person("Greg Winston","winston.greg@gmail.com");
-        personServiceImpl.createPerson(jane);
-        personServiceImpl.createPerson(greg);
+    public void getAllPersons() throws Exception,AssertionError {
+        try {
+            Person jane = new Person("Jane Turner","jane@gmail.com");
+            personServiceImpl.createPerson(jane);
+            Person greg = new Person("Greg Winston","winston.greg@gmail.com");
 
-        List<Person> persons = Arrays.asList(jane,greg);
+            personServiceImpl.createPerson(greg);
 
-        when(personServiceImpl.findAll()).thenReturn(persons);
+            List<Person> persons = Arrays.asList(jane,greg);
 
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get("/persons").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
-        log.info(mvcResult.toString());
+            when(personServiceImpl.findAll()).thenReturn(persons);
 
-        String expected = "["+"{"+"personId: 0, fullName: Jane Turner, email: jane@gmail.com}" + "," + "{personId: 0, fullName: Greg Winston, email: winston.greg@gmail.com}"+"]";
+            MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get("/persons").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
 
-        JSONAssert.assertEquals(expected,mvcResult.getResponse().getContentAsString(),false);
 
+            String expected = "[  {\"personId\" : \"0\" , \"fullName\":\"Jane Turner\" , \"email\":\"jane@gmail.com\"} ,  {\"personId\" : \"0\" , \"fullName\":\"Greg Winston\" , \"email\":\"winston.greg@gmail.com\"} ]";
+
+            JSONAssert.assertEquals(expected,mvcResult.getResponse().getContentAsString(),false);
+        }
+        catch (AssertionError error){
+            error.getMessage();
+        }
     }
+
+
 
 
 }

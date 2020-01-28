@@ -1,31 +1,32 @@
 package com.javaTests.UnitTests.mockito_mvc_test;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.javaTests.controllers.PersonController;
 import com.javaTests.models.Person;
 import com.javaTests.services.serviceImpl.PersonServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
+import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@SpringBootTest
+@RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 @Slf4j
-@WebMvcTest(PersonController.class )
+@WebMvcTest(PersonController.class)
 public class PersonIntegrationTests {
 
 
@@ -36,8 +37,8 @@ public class PersonIntegrationTests {
     @MockBean
     private PersonServiceImpl personServiceImpl;
 
-    @InjectMocks
-    private PersonController personController;
+   /* @InjectMocks
+    private PersonController personController;*/
 
     @Before
     public void setUp(){
@@ -62,11 +63,15 @@ public class PersonIntegrationTests {
         person.setFullName("Jenny Turner");
         person.setEmail("jenny.turner@gmail.com");
 
-        //simulate the form submit(POST)
-        mockMvc
-                .perform(post("/create/person",person))
-                .andExpect(status().isOk()).andReturn();
+        String body = (new ObjectMapper()).valueToTree(person).toString();
 
+        //simulate the form submit(POST)
+        mockMvc.perform(post("/person/create")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(body)
+                .characterEncoding("utf-8"))
+                .andExpect(status().isOk())
+                .andReturn();
 
     }
 }

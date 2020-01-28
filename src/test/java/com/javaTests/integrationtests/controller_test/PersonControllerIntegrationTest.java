@@ -30,12 +30,13 @@ public class PersonControllerIntegrationTest {
 
 
 
+
     @Test
     public void testControllerAddPerson() throws UserException {
 
         Person jenny = new Person();
 
-        jenny.setFullName("Jenny Turner");
+        jenny.setFullName("vova leadavschi");
         jenny.setEmail("turner.jenny@gmail.com");
 
         Person outcome = personController.createPerson(jenny);
@@ -70,4 +71,7 @@ public class PersonControllerIntegrationTest {
         Assert.assertThat(outcome,is(equalTo(new UserException(MISSED_EMAIL_MESSAGE))));
 
     }
+
+
+
 }
