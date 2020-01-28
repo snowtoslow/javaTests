@@ -36,6 +36,7 @@ public class PersonServiceImpl implements PersonService {
     public Object readPersonById(long personId) throws UserException {
 
         return personRepository.findById(personId).orElseThrow(()->new UserException("There is no person with such ID:"+personId));
+
     }
 
     @Override

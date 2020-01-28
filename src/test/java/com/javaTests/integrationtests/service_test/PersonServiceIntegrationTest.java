@@ -28,22 +28,22 @@ public class PersonServiceIntegrationTest {
     public void testAddPerson() throws UserException {
 
         //Create a person;
-        Person jenny = new Person();
+        Person fred = new Person();
 
-        jenny.setEmail("fred.galagher@gmail.com");
-        jenny.setFullName("Fred Galagher");
+        fred.setEmail("fred.galagher@gmail.com");
+        fred.setFullName("Fred Galagher");
 
-        log.info("jenny:{}",jenny);
+        log.info("jenny:{}",fred);
 
         //Test adding the person
-        Person newPerson = personServiceImpl.createPerson(jenny);
+        Person newPerson = personServiceImpl.createPerson(fred);
 
         //Verify the addition
         Assert.assertNotNull(newPerson);
 
         Assert.assertNotNull(newPerson.getPersonId());
 
-        Assert.assertNotNull("Fred Galagher",jenny.getFullName());
+        Assert.assertNotNull("Fred Galagher",fred.getFullName());
     }
 
 

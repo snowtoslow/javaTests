@@ -1,3 +1,4 @@
+/*
 package com.javaTests.featuresuite;
 
 
@@ -17,3 +18,4 @@ public class AddPersonFeatureTestSuite {
 
 
 }
+*/
